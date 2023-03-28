@@ -18,18 +18,21 @@ def create_books(file_name):
 
 def sort_by_lines(my_book):
     '''Takes a book and sorts it in ascending order by the line number'''
-    sorted_book = sorted(my_book, key= lambda book: book[1])
+    #sorted_book = tuple(sorted(my_book, key= lambda book: book[1]))
+    #sorted_book = [(line, num) for line, num in sorted(my_book, key = lambda x: x[1])]
+    sorted_book = dict(sorted(my_book, key= lambda x: (x[0], x[1])))
     return sorted_book
         
 books = create_books('data.txt')
-print(books[0][1])
-#finished_book = sort_by_lines(books[0])
+finished_book = sort_by_lines(books[0])
+print(finished_book)
 
-#student_tuples = [
- #   ('john', 'A', 15),
-  #  ('jane', 'B', 12),
-   # ('dave', 'B', 10),
-#]
-#answer = sorted(student_tuples, key=lambda student: student[2])
-#print(answer)
+#orders = {
+#	'cappuccino': 54,
+#	'latte': 56,
+#	'espresso': 72,
+#	'americano': 48,
+#	'cortado': 41
+#}
 
+#[print(key, value) for (key, value) in sorted(orders.items(), key=lambda x: x[1])]
