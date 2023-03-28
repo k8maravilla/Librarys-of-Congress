@@ -14,25 +14,18 @@ def create_books(file_name):
                 ttl_list.append((row[0], row[1]))
             else:
                 alg_list.append((row[0], row[1]))
-        return tuple((woo_list, ttl_list, alg_list)) 
+        return dict(woo_list), dict(ttl_list), dict(alg_list)
 
 def sort_by_lines(my_book):
     '''Takes a book and sorts it in ascending order by the line number'''
-    #sorted_book = tuple(sorted(my_book, key= lambda book: book[1]))
+    my_dictionary = dict(my_book)
+    my_values = list(my_dictionary.values())
+    sorted_val = sorted(my_values)
     #sorted_book = [(line, num) for line, num in sorted(my_book, key = lambda x: x[1])]
-    sorted_book = dict(sorted(my_book, key= lambda x: (x[0], x[1])))
-    return sorted_book
+    #sorted_book = dict(sorted(my_book, key= lambda x: (x[0], x[1])))
+    return sorted_val
         
 books = create_books('data.txt')
 finished_book = sort_by_lines(books[0])
 print(finished_book)
 
-#orders = {
-#	'cappuccino': 54,
-#	'latte': 56,
-#	'espresso': 72,
-#	'americano': 48,
-#	'cortado': 41
-#}
-
-#[print(key, value) for (key, value) in sorted(orders.items(), key=lambda x: x[1])]
