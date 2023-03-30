@@ -17,43 +17,41 @@ def sort_by_lines(my_book):
     sorted_book = [(line, num) for line, num in sorted(my_book, key = lambda x: x[1])]
     return sorted_book
 
-def minimum_length(my_list):
+def min_max_avg_length(my_list):
     '''this function looks at the lines of the book and tells which line is the shortest'''
     minimum_count = 0
     minimum_sentence = ''
+    maximum_count = 0
+    maximum_sentence = ''
     avg_count = []
     for row in my_list:
         min_count = len(row[0])
+        max_count = len(row[0])
         avg_count.append(min_count)
+        avg_count.append(max_count)
         if minimum_count == 0:
             minimum_count = min_count
+            maximum_count = max_count
             minimum_sentence = row[0]
+            maximum_sentence = row[0]
         elif min_count < minimum_count:
             minimum_count = min_count
             minimum_sentence = row[0]
-    total_avg = int(sum(avg_count) / len(avg_count))
-    return minimum_count, minimum_sentence, total_avg
-
-def maximum_length(my_list):
-    '''takes a list and returns the biggest line in the list'''
-    maximum_count = 0
-    maximum_sentence = ''
-    for row in my_list:
-        max_count = len(row[0])
-        if maximum_count == 0:
-            maximum_count = max_count
-            maximum_sentence = row[0]
         elif max_count > maximum_count:
             maximum_count = max_count
             maximum_sentence = row[0]
-    return maximum_count, maximum_sentence
+    total_avg = int(sum(avg_count) / len(avg_count))
+    with open("summary_novel.txt", "a") as file:
+        file.write('largest line: {}'.format(maximum_sentence))
+    return minimum_count, minimum_sentence, maximum_count, maximum_sentence, total_avg
+
+
+
 
 ttl_book = read_books('data.txt', 'TTL')
 woo_book = read_books('data.txt', 'WOO')
 alg_book = read_books('data.txt', 'ALG')
 
 answer = sort_by_lines(woo_book)
-short_answer = minimum_length(answer)
-long_answer = maximum_length(answer)
+short_answer = min_max_avg_length(answer)
 print(short_answer)
-print(long_answer)
