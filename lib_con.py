@@ -16,20 +16,17 @@ def get_titles(file_name):
 
     return my_titles
 
-def read_books(file_name, book_name):
+def read_books(file_name, title_name):
     '''takes a file and sorts it into different books (tuples)'''
-    book_list = []
+    title_contents = []
     with open(file_name, encoding='utf8') as file:
         reader = csv.reader(file, delimiter = '|')
         for row in reader:
-            if row[2] == book_name:
-                book_list.append((row[0], int(row[1])))
-            
-        return book_list
+            if row[2] == title_name:
+                title_contents.append((row[0], int(row[1])))
 
-def sort_by_lines(my_book):
-    '''Takes a book and sorts it in ascending order by the line number'''
-    sorted_book = [(line, num) for line, num in sorted(my_book, key = lambda x: x[1])]
+    sorted_book = [(line, num) for line, num in sorted(title_contents, key = lambda x: x[1])]
+            
     return sorted_book
 
 def max_length(my_list):
@@ -112,7 +109,11 @@ def write_novel(sorted_lin, book_name):
 
 def main():
    
-    get_titles(sys.argv[1])
+    title_names = get_titles(sys.argv[1])
+
+    for title in title_names:
+        total_title = read_books(sys.argv[1], title)
+
    
    
    
