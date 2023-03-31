@@ -33,6 +33,7 @@ def max_length(my_list):
             maximum_sentence = row[0]
             max_linenum = row[1]
 
+        #make sure that line numbers are integers
         elif maximum_count == sentence_length:
             if max_linenum < row[1]:
                 max_linenum = row[1]
@@ -50,16 +51,27 @@ def min_length(my_list):
     '''returns the minimum length of a list'''
     minimum_count = 0
     minimum_sentence = ''
+    min_linenum = 0
     for row in my_list:
-        min_sentence = len(row[0])
+        sentence_length = len(row[0])
 
         if minimum_count == 0:
-            minimum_count = min_sentence
+            minimum_count = sentence_length
             minimum_sentence = row[0], row[1]
+            min_linenum =row[1]
         
-        elif min_sentence < minimum_count:
-            minimum_count = min_sentence
+        #make sure that line numbers are integers
+        elif minimum_count == sentence_length:
+            if min_linenum > row[1]:
+                min_linenum =row[1]
+                minimum_count = sentence_length
+                minimum_sentence = row[0], row[1]
+        
+        elif sentence_length < minimum_count:
+            minimum_count = sentence_length
             minimum_sentence = row[0], row[1]
+            min_linenum =row[1]
+
     return minimum_sentence
 
 def avg_length(my_list):
@@ -122,13 +134,13 @@ def main():
 
     write_novel(alg_sorted, 'ALG')
 
-woo_book = read_books('book_data.txt', 'WOO')
-woo_sorted = sort_by_lines(woo_book)
-max_answer = max_length(woo_sorted)
-min_answer = min_length(woo_sorted)
-avg_answer = avg_length(woo_sorted)
-print(max_answer)
-print(min_answer)
-print(avg_answer)
+#woo_book = read_books('book_data.txt', 'WOO')
+#woo_sorted = sort_by_lines(woo_book)
+#max_answer = max_length(woo_sorted)
+#min_answer = min_length(woo_sorted)
+#avg_answer = avg_length(woo_sorted)
+#print(max_answer)
+#print(min_answer)
+#print(avg_answer)
 
 
