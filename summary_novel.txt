@@ -1,1 +1,3 @@
-largest line: �To wash my face clean after the dust of the road, and to drink, so the
+Longest line (633) : “To wash my face clean after the dust of the road, and to drink, so the
+Shortest line (767): with the old woman, waiting for me to come after her.
+Average length : 67
