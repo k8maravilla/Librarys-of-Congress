@@ -1,0 +1,8 @@
+WOO
+('Oz.', 1687)
+('therefore the modern child seeks only entertainment in its wonder tales', 44)
+57
+TTL
+('N', 2041)
+('A complete, unabridged translation of Vingt mille lieues sous les mers', 5)
+58
