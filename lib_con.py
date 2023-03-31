@@ -1,10 +1,11 @@
+import sys
 import csv
 
+teacher_file = sys.argv[0]
 
 def read_books(file_name, book_name):
     '''takes a file and sorts it into different books (tuples)'''
     book_list = []
-    
     with open(file_name, encoding='utf8') as file:
         reader = csv.reader(file, delimiter = '|')
         for row in reader:
@@ -18,36 +19,46 @@ def sort_by_lines(my_book):
     sorted_book = [(line, num) for line, num in sorted(my_book, key = lambda x: x[1])]
     return sorted_book
 
-def min_max_avg_length(my_list):
-    '''this function looks at the lines of the book and tells which line is the shortest'''
-    minimum_count = 0
-    minimum_sentence = ''
+def max_length(my_list):
+    '''returns the max length of a sentence'''
     maximum_count = 0
     maximum_sentence = ''
-    avg_count = []
-
     for row in my_list:
-        min_count = len(row[0])
-        max_count = len(row[0])
-        avg_count.append(min_count)
-        avg_count.append(max_count)
+        biggest_sentence = len(row[0])
+
+        if maximum_count == 0:
+            maximum_count = biggest_sentence
+            maximum_sentence = row[0], row[1]
+        
+        elif biggest_sentence > maximum_count:
+            maximum_count = biggest_sentence
+            maximum_sentence = row[0],row[1]
+    return maximum_sentence
+
+def min_length(my_list):
+    '''returns the minimum length of a list'''
+    minimum_count = 0
+    minimum_sentence = ''
+    for row in my_list:
+        min_sentence = len(row[0])
 
         if minimum_count == 0:
-            minimum_count = min_count
-            maximum_count = max_count
+            minimum_count = min_sentence
             minimum_sentence = row[0], row[1]
-            maximum_sentence = row[0], row[1]
-
-        elif min_count < minimum_count:
-            minimum_count = min_count
+        
+        elif min_sentence < minimum_count:
+            minimum_count = min_sentence
             minimum_sentence = row[0], row[1]
+    return minimum_sentence
 
-        elif max_count > maximum_count:
-            maximum_count = max_count
-            maximum_sentence = row[0],row[1]
-
+def avg_length(my_list):
+    '''returns the average of the length of a list'''
+    avg_count = []
+    for row in my_list:
+        total_count = len(row[0])
+        avg_count.append(total_count)
     total_avg = int(sum(avg_count) / len(avg_count))
-    return minimum_sentence, maximum_sentence, total_avg
+    return total_avg
 
 def write_summary_to_file(summary, book_name):
     '''writes the novel summary to a file'''
@@ -56,7 +67,6 @@ def write_summary_to_file(summary, book_name):
         f.write('Longest line ({}) : {}\n'.format(summary[1][1], summary[1][0]))
         f.write('Shortest line ({}): {}\n'.format(summary[0][1], summary[0][0]))
         f.write('Average length : {}\n\n'.format(summary[2]))
-
 
 def write_novel(sorted_lin, book_name):
     '''writes the lines to a file with the whole book sorted'''
@@ -101,8 +111,12 @@ def main():
 
     write_novel(alg_sorted, 'ALG')
 
-
-main()
-
-
+woo_book = read_books('book_data.txt', 'WOO')
+woo_sorted = sort_by_lines(woo_book)
+max_answer = max_length(woo_sorted)
+min_answer = min_length(woo_sorted)
+avg_answer = avg_length(woo_sorted)
+print(max_answer)
+print(min_answer)
+print(avg_answer)
 
