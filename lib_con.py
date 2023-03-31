@@ -54,7 +54,8 @@ def max_length(my_list):
             maximum_sentence = row[0],row[1]
             max_linenum = row[1]
 
-    return maximum_sentence
+    #return (maximum_sentence)
+    return (maximum_sentence, max_linenum)
 
 def min_length(my_list):
     '''returns the minimum length of a list'''
@@ -80,7 +81,7 @@ def min_length(my_list):
             minimum_sentence = row[0]
             min_linenum =row[1]
 
-    return minimum_sentence
+    return (minimum_sentence, min_linenum)
 
 def avg_length(my_list):
     '''returns the average of the length of a list'''
@@ -91,19 +92,19 @@ def avg_length(my_list):
     total_avg = int(sum(avg_count) / len(avg_count))
     return total_avg
 
-def write_summary_to_file(summary, book_name):
+def write_summary_to_file(max, min, avg, title):
     '''writes the novel summary to a file'''
-    with open('summary_novel.txt', 'a+', encoding = 'utf8') as f:
-        f.write('{}\n'.format(book_name))
-        f.write('Longest line ({}) : {}\n'.format(summary[1][1], summary[1][0]))
-        f.write('Shortest line ({}): {}\n'.format(summary[0][1], summary[0][0]))
-        f.write('Average length : {}\n\n'.format(summary[2]))
+    with open('summary_novel.txt', 'a+', encoding = 'utf8') as file:
+        file.write('{}\n'.format(title))
+        file.write('Longest line ({}) : {}\n'.format(max[1], max[0]))
+        file.write('Shortest line ({}): {}\n'.format(min[1], min[0]))
+        file.write('Average length : {}\n\n'.format(avg))
 
-def write_novel(sorted_lin, book_name):
+def write_novel(list, title):
     '''writes the lines to a file with the whole book sorted'''
     with open('Novel_text.txt', 'a+', encoding = 'utf8') as file:
-        file.write('{}\n'.format(book_name))
-        for line in sorted_lin:
+        file.write('{}\n'.format(title))
+        for line in list:
             file.write('{}\n'.format(line))
         file.write('-----\n')
 
@@ -112,7 +113,19 @@ def main():
     title_names = get_titles(sys.argv[1])
 
     for title in title_names:
+
         total_title = read_books(sys.argv[1], title)
+
+        max = max_length(total_title)
+
+        min = min_length(total_title)
+
+        average = avg_length(total_title)
+
+        summary = write_summary_to_file(max, min, average, title)
+
+        novel = write_novel(total_title, title[0])
+        
 
    
    

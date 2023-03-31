@@ -1,4 +1,5 @@
-TTL
+
+T
 ('Twenty Thousand Leagues Under the Seas', 0)
 ('An Underwater Tour of the World', 1)
 ('JULES VERNE', 2)
@@ -14156,8 +14157,7 @@ TTL
 ('humanity have now earned the right to reply. Captain Nemo and I.', 14154)
 ('END OF THE SECOND PART', 14155)
 -----
-
-WOO
+W
 ('[Illustration]', 0)
 ('The Wonderful Wizard of Oz', 1)
 ('by L. Frank Baum', 2)
@@ -17661,8 +17661,7 @@ WOO
 ('“From the Land of Oz,” said Dorothy gravely. “And here is Toto, too.', 3500)
 ('And oh, Aunt Em! I’m so glad to be at home again!”', 3501)
 -----
-
-ALG
+A
 ('[Illustration]', 0)
 ('THROUGH THE LOOKING-GLASS', 1)
 ('And What Alice Found There', 2)
@@ -20651,4 +20650,3 @@ ALG
 ('Life, what is it but a dream?', 2985)
 ('THE END', 2986)
 -----
-
