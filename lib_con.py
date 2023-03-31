@@ -3,6 +3,19 @@ import csv
 
 teacher_file = sys.argv[0]
 
+def get_titles(file_name):
+    '''takes a file and sorts it into different books (tuples)'''
+    book_titles = []
+
+    with open(file_name, encoding='utf8') as file:
+        reader = csv.reader(file, delimiter = '|')
+        for row in reader:
+            book_titles.append(row[2])
+
+    my_titles = set(book_titles)
+
+    return my_titles
+
 def read_books(file_name, book_name):
     '''takes a file and sorts it into different books (tuples)'''
     book_list = []
@@ -98,39 +111,56 @@ def write_novel(sorted_lin, book_name):
         file.write('-----\n')
 
 def main():
-    '''executes all code'''
-    #ttl output
-    ttl_book = read_books('book_data.txt', 'TTL')
+   
+    get_titles(sys.argv[1])
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    # '''executes all code'''
+    # #ttl output
+    # ttl_book = read_books('book_data.txt', 'TTL')
 
-    ttl_sorted = sort_by_lines(ttl_book)
+    # ttl_sorted = sort_by_lines(ttl_book)
 
-    ttl_answer = min_max_avg_length(ttl_sorted)
+    # ttl_answer = min_max_avg_length(ttl_sorted)
 
-    write_summary_to_file(ttl_answer, 'TTL')
+    # write_summary_to_file(ttl_answer, 'TTL')
 
-    write_novel(ttl_sorted, 'TTL')
+    # write_novel(ttl_sorted, 'TTL')
 
-    #woo output
-    woo_book = read_books('book_data.txt', 'WOO')
+    # #woo output
+    # woo_book = read_books('book_data.txt', 'WOO')
 
-    woo_sorted = sort_by_lines(woo_book)
+    # woo_sorted = sort_by_lines(woo_book)
 
-    woo_answer = min_max_avg_length(woo_sorted)
+    # woo_answer = min_max_avg_length(woo_sorted)
 
-    write_summary_to_file(woo_answer, 'WOO')
+    # write_summary_to_file(woo_answer, 'WOO')
 
-    write_novel(woo_sorted, 'WOO')
+    # write_novel(woo_sorted, 'WOO')
 
-    #alg output
-    alg_book = read_books('book_data.txt', 'ALG')
+    # #alg output
+    # alg_book = read_books('book_data.txt', 'ALG')
 
-    alg_sorted = sort_by_lines(alg_book)
+    # alg_sorted = sort_by_lines(alg_book)
 
-    alg_answer = min_max_avg_length(alg_sorted)
+    # alg_answer = min_max_avg_length(alg_sorted)
 
-    write_summary_to_file(alg_answer, "ALG")
+    # write_summary_to_file(alg_answer, "ALG")
 
-    write_novel(alg_sorted, 'ALG')
+    # write_novel(alg_sorted, 'ALG')
 
 #woo_book = read_books('book_data.txt', 'WOO')
 #woo_sorted = sort_by_lines(woo_book)
@@ -140,4 +170,4 @@ def main():
 #print(max_answer)
 #print(min_answer)
 #print(avg_answer)
-
+main()
