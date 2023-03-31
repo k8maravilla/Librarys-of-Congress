@@ -22,17 +22,28 @@ def sort_by_lines(my_book):
 def max_length(my_list):
     '''returns the max length of a sentence'''
     maximum_count = 0
+    max_linenum = 0
     maximum_sentence = ''
+
     for row in my_list:
-        biggest_sentence = len(row[0])
+        sentence_length = len(row[0])
 
         if maximum_count == 0:
-            maximum_count = biggest_sentence
-            maximum_sentence = row[0], row[1]
-        
-        elif biggest_sentence > maximum_count:
-            maximum_count = biggest_sentence
+            maximum_count = sentence_length
+            maximum_sentence = row[0]
+            max_linenum = row[1]
+
+        elif maximum_count == sentence_length:
+            if max_linenum < row[1]:
+                max_linenum = row[1]
+                maximum_sentence = row[0]
+                maximum_count = sentence_length
+
+        elif sentence_length > maximum_count:
+            maximum_count = sentence_length
             maximum_sentence = row[0],row[1]
+            max_linenum = row[1]
+
     return maximum_sentence
 
 def min_length(my_list):
@@ -119,4 +130,5 @@ avg_answer = avg_length(woo_sorted)
 print(max_answer)
 print(min_answer)
 print(avg_answer)
+
 
