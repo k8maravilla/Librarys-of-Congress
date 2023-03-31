@@ -56,18 +56,18 @@ def min_length(my_list):
 
         if minimum_count == 0:
             minimum_count = sentence_length
-            minimum_sentence = row[0], row[1]
+            minimum_sentence = row[0]
             min_linenum =row[1]
         
         elif minimum_count == sentence_length:
             if min_linenum > row[1]:
                 min_linenum =row[1]
                 minimum_count = sentence_length
-                minimum_sentence = row[0], row[1]
+                minimum_sentence = row[0]
         
         elif sentence_length < minimum_count:
             minimum_count = sentence_length
-            minimum_sentence = row[0], row[1]
+            minimum_sentence = row[0]
             min_linenum =row[1]
 
     return minimum_sentence
@@ -140,9 +140,4 @@ def main():
 #print(max_answer)
 #print(min_answer)
 #print(avg_answer)
-
-my_list = [('hello worlddsafdas', int('10')), ('hello wiplddsafdas', int('9')), ('goodbye', int('7')), ('Idunnow', int('5'))]
-
-answer = min_length(my_list)
-print(answer)
 
