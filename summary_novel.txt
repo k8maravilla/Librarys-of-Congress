@@ -1,27 +1,12 @@
-WOO
-Longest line (44) : therefore the modern child seeks only entertainment in its wonder tales
-Shortest line (1687): Oz.
-Average length : 57
-
 TTL
 Longest line (5) : A complete, unabridged translation of Vingt mille lieues sous les mers
 Shortest line (2041): N
 Average length : 58
 
-ALG
-Longest line (23) : 2. Alice through Q.’s 3d (_by railwayv) to 4th (_Tweedledum and Tweedledee_)
-Shortest line (1672): 1
-Average length : 53
-
 WOO
 Longest line (44) : therefore the modern child seeks only entertainment in its wonder tales
 Shortest line (1687): Oz.
 Average length : 57
-
-TTL
-Longest line (5) : A complete, unabridged translation of Vingt mille lieues sous les mers
-Shortest line (2041): N
-Average length : 58
 
 ALG
 Longest line (23) : 2. Alice through Q.’s 3d (_by railwayv) to 4th (_Tweedledum and Tweedledee_)
