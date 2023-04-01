@@ -12,8 +12,8 @@ def get_titles(file_name):
         for row in reader:
             book_titles.append(row[2])
 
-    book_titles.sort()
-    my_titles = set(book_titles)
+    sorted_books = sorted(book_titles)
+    my_titles = set(sorted_books)
     return my_titles
 
 def read_books(file_name, title_name):
